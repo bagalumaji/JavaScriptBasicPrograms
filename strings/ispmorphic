@@ -1,0 +1,26 @@
+var isIsomorphic = function (s, t) {
+    if (s.length !== t.length)
+        return false;
+
+    let map = {};
+    for (let i = 0; i < s.length; i++) {
+        let schar = s[i];
+        let tchar = t[i];
+        if (!map.hasOwnProperty(schar)) {
+            if (map[tchar] !== schar) {
+                map[schar] = tchar;
+            } else {
+                return false;
+            }
+        } else {
+            let mappedChar = map[schar];
+            if (mappedChar !== tchar) {
+                return false;
+            }
+        }
+    }
+    console.log(map);
+    return true;
+};
+
+console.log(isIsomorphic("badc", "baba"));
